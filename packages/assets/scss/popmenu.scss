@@ -1,0 +1,176 @@
+.ql-docs-dropdown-panel {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  box-shadow: 0 2px 12px 0 rgba(56,56,56,.2);
+  border: 1px solid #e2e6ed;
+  border-radius: 2px;
+  max-height: 500px;
+
+  font-size: small;
+
+  @extend %scrollbar;
+
+  &__body {
+    padding: 4px;
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+    .menu-item {
+      line-height: 30px;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+      flex-shrink: 0;
+      position: relative;
+      padding: 0 32px 0 16px;
+      height: 30px;
+      align-items: center;
+
+      .ql-icon {
+        margin-right: 8px;
+      }
+
+      &:after {
+        top: calc(50% - 8px);
+      }
+
+      &:not(.disabled):hover {
+        background: rgba(25, 55, 88, .1);
+        cursor: pointer;
+      }
+
+      &.only-text {
+        line-height: 30px;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-wrap: normal;
+      }
+
+      &.selected:after {
+        position: absolute;
+        content: "";
+        width: 16px;
+        height: 16px;
+        right: 8px;
+        background: url(../icons/selected.svg);
+      }
+
+      &[data-header] {
+        height: unset;
+        line-height: 1.75;
+      }
+
+      &[data-header='h1'] {
+        font-size: 2em;
+      }
+
+      &[data-header='h2'] {
+        font-size: 1.5em;
+      }
+
+      &[data-header='h3'] {
+        font-size: 1.17em;
+      }
+
+      .has-icon {
+        display: flex;
+        align-items: center;
+        position: relative;
+        border-radius: 2px;
+        white-space: nowrap;
+        flex-shrink: 0;
+
+        .btn-text {
+          vertical-align: middle;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+}
+
+
+.ql-doc-list {
+  box-sizing: border-box;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  box-shadow: 0 2px 12px 0 rgba(56,56,56,.2);
+  border: 1px solid #e2e6ed;
+  border-radius: 2px;
+
+  @extend %scrollbar;
+
+  * {
+    box-sizing: border-box;
+  }
+
+
+  &__body {
+    width: 264px;
+    max-width: 264px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4px;
+    flex-grow: 1;
+    height: 100%;
+    flex-direction: row;
+
+
+    .list-item {
+      width: 64px;
+      height: 68px;
+      padding: 8px;
+      display: inline-block;
+
+      &:nth-child(4n-3) {
+        margin-left: 0;
+      }
+
+      &:hover, &.selected {
+        background: rgba(25,55,88,.04);
+        border-radius: 2px;
+      }
+
+      .icon-wrap {
+        font-size: 12px;
+        color: #3d4757;
+        text-align: center;
+        width: 48px;
+        height: 52px;
+        line-height: 48px;
+        display: inline-block;
+        border: 1px solid #e2e6ed;
+        background: #fff;
+      }
+    }
+  }
+}
+
+.ql-sub-menu {
+  &:after {
+    position: absolute;
+    content: "";
+    width: 16px;
+    height: 16px;
+    right: 12px;
+    background-image: url(../icons/right-dropdown.svg);
+  }
+}
+
+.ql-docs-insert-dropdown-panel {
+  width: 130px;
+}

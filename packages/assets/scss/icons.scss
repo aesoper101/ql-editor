@@ -1,0 +1,218 @@
+.ql-icon {
+  vertical-align: middle;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  flex-shrink: 0;
+
+  &-16 {
+    width: 16px;
+    height: 16px;
+
+    &-undo {
+      background-image: url(../icons/undo.svg);
+    }
+
+    &-redo {
+      background-image: url(../icons/redo.svg);
+    }
+
+    &-painter {
+      background-image: url(../icons/painter.svg);
+    }
+
+    &-clean {
+      background-image: url(../icons/clean.svg);
+    }
+
+    &-size_minus {
+      background-image: url(../icons/size_minus.svg);
+    }
+
+    &-size_add {
+      background-image: url(../icons/size_add.svg);
+    }
+
+    &-bold {
+      background-image: url(../icons/bold.svg);
+    }
+
+    &-underline {
+      background-image: url(../icons/underline.svg);
+    }
+
+    &-strike {
+      background-image: url(../icons/strike.svg);
+    }
+
+    &-italic {
+      background-image: url(../icons/italic.svg);
+    }
+
+    &-color {
+      background-image: url(../icons/color.svg);
+    }
+
+    &-background {
+      background-image: url(../icons/background.svg);
+    }
+
+    &-header {
+      background-image: url(../icons/header.svg);
+    }
+
+    &-lineHeight {
+      background-image: url(../icons/lineHeight.svg);
+    }
+
+    &-script {
+      background-image: url(../icons/script.svg);
+    }
+
+    &-script_sub {
+      background-image: url(../icons/script_sub.svg);
+    }
+
+    &-script_super {
+      background-image: url(../icons/script_super.svg);
+    }
+
+    &-align, &-align_left {
+      background-image: url(../icons/align_left.svg);
+    }
+
+    &-align_right {
+      background-image: url(../icons/align_right.svg);
+    }
+
+    &-align_center {
+      background-image: url(../icons/align_center.svg);
+    }
+
+    &-align_justify {
+      background-image: url(../icons/align_justify.svg);
+    }
+
+    &-indent {
+      background-image: url(../icons/indent.svg);
+    }
+
+    &-outdent {
+      background-image: url(../icons/outdent.svg);
+    }
+
+    &-todo {
+      background-image: url(../icons/todo.svg);
+    }
+
+    &-ordered {
+      background-image: url(../icons/ordered.svg);
+    }
+
+    &-bullet {
+      background-image: url(../icons/bullet.svg);
+    }
+
+    &-insert {
+      background-image: url(../icons/insert.svg);
+    }
+
+    &-search {
+      background-image: url(../icons/search.svg);
+    }
+
+    &-print {
+      background-image: url(../icons/print.svg);
+    }
+
+    &-table {
+      background-image: url(../icons/table.svg);
+    }
+
+    &-image {
+      background-image: url(../icons/image.svg);
+    }
+
+    &-divider {
+      background-image: url(../icons/seperatorline.svg);
+    }
+
+    &-watermark {
+      background-image: url(../icons/watermark.svg);
+    }
+
+    &-link {
+      background-image: url(../icons/link.svg);
+    }
+
+    &-signature {
+      background-image: url(../icons/signature.svg);
+    }
+
+    &-blockquote {
+      background-image: url(../icons/blockquote.svg);
+    }
+
+    &-audio {
+      background-image: url(../icons/audio.svg);
+    }
+
+    &-video {
+      background-image: url(../icons/video.svg);
+    }
+
+    &-attachment {
+      background-image: url(../icons/attachment.svg);
+    }
+
+    &-code {
+      background-image: url(../icons/code.svg);
+    }
+  }
+
+
+  &-big {
+    width: 48px;
+    height: 52px;
+
+    &-ordered-sequence1 {
+      background-image: url(../icons/ordered-sequence1.svg);
+    }
+
+    &-ordered-sequence2 {
+      background-image: url(../icons/ordered-sequence2.svg);
+    }
+
+    &-ordered-sequence3 {
+      background-image: url(../icons/ordered-sequence3.svg);
+    }
+
+    &-ordered-sequence4 {
+      background-image: url(../icons/ordered-sequence4.svg);
+    }
+
+    &-ordered-sequence5 {
+      background-image: url(../icons/ordered-sequence5.svg);
+    }
+
+    &-ordered-sequence6 {
+      background-image: url(../icons/ordered-sequence6.svg);
+    }
+
+    &-bullet-sequence1{
+      background-image: url(../icons/bullet-sequence1.svg);
+    }
+
+    &-bullet-sequence2{
+      background-image: url(../icons/bullet-sequence2.svg);
+    }
+
+    &-bullet-sequence3{
+      background-image: url(../icons/bullet-sequence3.svg);
+    }
+
+    &-bullet-sequence4{
+      background-image: url(../icons/bullet-sequence4.svg);
+    }
+  }
+}

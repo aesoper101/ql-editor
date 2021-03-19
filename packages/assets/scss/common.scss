@@ -1,0 +1,42 @@
+article, aside, blockquote, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+
+%scrollbar {
+
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: #c0c6cf;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.ql-docs {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+  flex-direction: column;
+
+
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+  }
+
+}
