@@ -12,7 +12,7 @@ export interface Options {
 
 export const DEFAULT_TOOLBAR_OPTIONS: Options = {
   container: [
-    ["undo", "redo", "painter", "clean", "|"],
+    // ["undo", "redo", "painter", "clean", "|"],
     [
       {
         font: [

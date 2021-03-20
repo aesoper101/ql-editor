@@ -7,6 +7,8 @@ import FormatEvent from "./format-event";
 import { ToolbarConfig } from "../config";
 import Delta from "quill-delta";
 
+import { ResizeObserver } from "@juggle/resize-observer";
+
 const Parchment = Quill.import("parchment");
 
 export type HandlerFunc = (
@@ -32,6 +34,41 @@ const addToolbar = () => {
   DOMUtils.appendChild(wrapper, leftRollBtn);
   DOMUtils.appendChild(wrapper, rightRollBtn);
   DOMUtils.appendChild(root, wrapper);
+
+  // 监听左点击按钮
+  DOMUtils.addEventListener(leftRollBtn, "click", (e: Event) => {
+    e.stopPropagation();
+    const contentWidth = buttonsContainer.offsetWidth;
+    console.log(contentWidth, buttonsContainer.offsetLeft);
+    wrapper.scrollLeft += 20;
+    // buttonsContainer.scrollTo({ left: -500, top: 0, behavior: "smooth" });
+  });
+
+  // 监听左点击按钮
+  DOMUtils.addEventListener(rightRollBtn, "click", (e: Event) => {
+    e.stopPropagation();
+    const contentWidth = buttonsContainer.scrollWidth;
+    buttonsContainer.scrollLeft = -120;
+    // buttonsContainer.scrollBy()
+    // buttonsContainer.scrollTo({ left: -500, top: 0, behavior: "smooth" });
+  });
+
+  // 监听宽度变化
+  const ro = new ResizeObserver(() => {
+    const contentWidth = buttonsContainer.offsetWidth;
+    const containerWidth = wrapper.offsetWidth + 56;
+
+    // 如果内容宽度大于容器可视宽度则显示左右按钮
+    if (contentWidth > containerWidth) {
+      leftRollBtn.style.visibility = "visible";
+      rightRollBtn.style.visibility = "visible";
+    } else {
+      leftRollBtn.style.visibility = "hidden";
+      rightRollBtn.style.visibility = "hidden";
+    }
+  });
+
+  ro.observe(wrapper);
 
   return [root, buttonsContainer];
 };
