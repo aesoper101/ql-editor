@@ -10,10 +10,16 @@ declare module "quill/core/selection" {
     readonly width: number;
   }
 
-  export class Range {
-    index: number;
-    length: number;
-    constructor(index: number, length: number = 0);
+  interface NativeRange {
+    start: {
+      node: Node;
+      offset: number;
+    };
+    end: {
+      node: Node;
+      offset: number;
+    };
+    native: Range;
   }
 
   declare class Selection {
@@ -22,6 +28,10 @@ declare module "quill/core/selection" {
 
     getBounds(index, length = 0): Rect;
     hasFocus(): boolean;
+
+    normalizeNative(range: Range): NativeRange;
+
+    normalizedToRange(normalized: NativeRange): RangeStatic;
   }
 
   export default Selection;

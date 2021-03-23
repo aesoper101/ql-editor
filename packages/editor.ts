@@ -29,6 +29,14 @@ class Editor {
       theme: "bee",
       modules: {
         toolbar: DEFAULT_TOOLBAR_OPTIONS,
+        uploader: {
+          allowDropUpload: true,
+          // uploadRequest: () => {
+          //   const url =
+          //     "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2586511470,1700329541&fm=26&gp=0.jpg";
+          //   return Promise.resolve({ data: "======", type: "image", url: url });
+          // },
+        },
       },
     });
 
@@ -103,6 +111,10 @@ class Editor {
 
   addHandler() {
     console.log(1);
+  }
+
+  format(name: string, value: any) {
+    this.quill.format(name, value);
   }
 
   getText() {

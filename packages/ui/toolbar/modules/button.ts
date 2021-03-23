@@ -33,7 +33,7 @@ export class ButtonComponent extends Component {
     });
   }
 
-  private emitChange(format: string, formatValue?: string) {
+  protected emitChange(format: string, formatValue?: string) {
     if (format) {
       this.emitter?.emit(format, formatValue);
     }

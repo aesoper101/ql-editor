@@ -8,12 +8,10 @@ import { ToolbarConfig } from "../config";
 import Delta from "quill-delta";
 
 import { ResizeObserver } from "@juggle/resize-observer";
+import { HandlerFunc } from "../ui/toolbar/type";
+import { DEFAULT_HANDLERS } from "../core/handler";
 
 const Parchment = Quill.import("parchment");
-
-export type HandlerFunc = (
-  formatValue: string
-) => void | string | PromiseLike<any>;
 
 const addToolbar = () => {
   const root = DOMUtils.createElement("div", "ql-docs-toolbar");
@@ -38,25 +36,36 @@ const addToolbar = () => {
   // 监听左点击按钮
   DOMUtils.addEventListener(leftRollBtn, "click", (e: Event) => {
     e.stopPropagation();
-    const contentWidth = buttonsContainer.offsetWidth;
-    console.log(contentWidth, buttonsContainer.offsetLeft);
-    wrapper.scrollLeft += 20;
-    // buttonsContainer.scrollTo({ left: -500, top: 0, behavior: "smooth" });
+    if (DOMUtils.hasClass(leftRollBtn, "disabled")) {
+      return;
+    }
+
+    buttons.scrollLeft -= 20;
+    if (buttons.scrollLeft <= 0) {
+      leftRollBtn.classList.add("disabled");
+    }
+    rightRollBtn.classList.remove("disabled");
   });
 
   // 监听左点击按钮
   DOMUtils.addEventListener(rightRollBtn, "click", (e: Event) => {
     e.stopPropagation();
-    const contentWidth = buttonsContainer.scrollWidth;
-    buttonsContainer.scrollLeft = -120;
-    // buttonsContainer.scrollBy()
-    // buttonsContainer.scrollTo({ left: -500, top: 0, behavior: "smooth" });
+    if (DOMUtils.hasClass(rightRollBtn, "disabled")) {
+      return;
+    }
+    const contentWidth = buttonsContainer.offsetWidth;
+    buttons.scrollLeft += 24;
+    if (buttons.scrollLeft + buttons.offsetWidth >= contentWidth) {
+      buttons.scrollLeft = contentWidth - buttons.offsetWidth;
+      rightRollBtn.classList.add("disabled");
+    }
+    leftRollBtn.classList.remove("disabled");
   });
 
   // 监听宽度变化
   const ro = new ResizeObserver(() => {
     const contentWidth = buttonsContainer.offsetWidth;
-    const containerWidth = wrapper.offsetWidth + 56;
+    const containerWidth = buttons.offsetWidth;
 
     // 如果内容宽度大于容器可视宽度则显示左右按钮
     if (contentWidth > containerWidth) {
@@ -66,9 +75,17 @@ const addToolbar = () => {
       leftRollBtn.style.visibility = "hidden";
       rightRollBtn.style.visibility = "hidden";
     }
+
+    if (buttons.scrollLeft <= 0) {
+      leftRollBtn.classList.add("disabled");
+      rightRollBtn.classList.remove("disabled");
+    } else {
+      leftRollBtn.classList.remove("disabled");
+      rightRollBtn.classList.add("disabled");
+    }
   });
 
-  ro.observe(wrapper);
+  ro.observe(buttons);
 
   return [root, buttonsContainer];
 };
@@ -78,7 +95,7 @@ class Toolbar extends Module {
   componentList: Component[] = [];
   formatEvent: FormatEvent;
 
-  protected handlers: Record<string, HandlerFunc> = {};
+  protected handlers: Record<string, HandlerFunc> = DEFAULT_HANDLERS;
 
   constructor(quill: Quill, options?: StringMap) {
     super(quill, options);
@@ -129,11 +146,16 @@ class Toolbar extends Module {
       console.error("Container required for toolbar", this.options);
       return;
     }
+    if (this.options.handlers && typeof this.options.handlers === "object") {
+      Object.keys(this.options.handlers).forEach((format) => {
+        if (typeof this.options.handlers[format] === "function") {
+          this.addHandler(format, this.options.handlers[format]);
+        }
+      });
+    }
 
     this.quill.on("editor-change", () => {
       const data = {
-        history: this.quill.history,
-        emitter: this.quill.emitter,
         formats: this.quill.getFormat() || {},
       };
       this.componentList.forEach((component) => {
@@ -165,7 +187,11 @@ class Toolbar extends Module {
 
     const range = this.quill.getSelection();
     if (this.handlers[format] != null) {
-      this.handlers[format].call(this, formatValue || "");
+      const result = this.handlers[format].call(this, this.quill, formatValue);
+      if (typeof result === "string") {
+        this.doUpdateFormat(format, result);
+        return;
+      }
     } else if (
       query &&
       Object.getPrototypeOf(query).prototype instanceof Parchment.EmbedBlot
@@ -181,23 +207,31 @@ class Toolbar extends Module {
         "user"
       );
     } else {
-      const formats = this.quill.getFormat();
+      this.doUpdateFormat(format, formatValue);
+    }
+  }
 
-      if (formatValue == "") {
-        this.quill.format(format, "");
+  private doUpdateFormat(format: string, formatValue?: string) {
+    const formats = this.quill.getFormat();
+
+    if (formatValue == "") {
+      this.quill.format(format, "");
+      return;
+    }
+
+    if (formats && format in formats) {
+      if (formatValue !== undefined && formatValue !== formats[format]) {
+        this.quill.format(format, formatValue || true);
         return;
       }
-
-      if (formats && format in formats) {
-        if (formatValue !== undefined && formatValue !== formats[format]) {
-          this.quill.format(format, formatValue || true);
-          return;
-        }
-        this.quill.format(format, "");
-      } else {
-        this.quill.format(format, formatValue || true);
-      }
+      this.quill.format(format, "");
+    } else {
+      this.quill.format(format, formatValue || true);
     }
+  }
+
+  addHandler(name: string, handler: HandlerFunc) {
+    this.handlers[name] = handler;
   }
 }
 

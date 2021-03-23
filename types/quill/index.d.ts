@@ -15,6 +15,7 @@ import { ScrollBlot } from "parchment/src/parchment";
 import Delta = require("quill-delta");
 import Emitter from "quill/core/emitter";
 import History from "quill/modules/history";
+import Selection from "quill/core/selection";
 
 /**
  * A stricter type definition would be:
@@ -159,6 +160,7 @@ export class Quill implements EventEmitter {
   emitter: Emitter;
   history: History;
   scroll: ScrollBlot;
+  selection: Selection;
   keyboard: KeyboardStatic;
   constructor(container: string | Element, options?: QuillOptionsStatic);
   deleteText(index: number, length: number, source?: Sources): Delta;

@@ -107,10 +107,7 @@ class Compact {
           "ql-vc-compact__color-cube--wrap"
         );
 
-        const cube = DOMUtils.createElement(
-          "div",
-          "ql-vc-compact__color_cube"
-        );
+        const cube = DOMUtils.createElement("div", "ql-vc-compact__color_cube");
         cube.setAttribute("data-color", color);
 
         if (color === "advance" || color === "transparent") {

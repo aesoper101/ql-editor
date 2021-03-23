@@ -8,6 +8,7 @@ export class RedoButtonComponent extends ButtonComponent {
       if (this.root && DOMUtils.hasClass(this.root, "disabled")) {
         return;
       }
+      this.emitChange(this.format);
     });
   }
 
@@ -15,7 +16,8 @@ export class RedoButtonComponent extends ButtonComponent {
     super.update(data);
     if (this.root) {
       if (this.history && this.history.stack?.redo.length > 0) {
-        DOMUtils.replaceClass(this.root, "disabled", "");
+        console.log("====redo");
+        DOMUtils.removeClass(this.root, "disabled");
       } else {
         DOMUtils.addClass(this.root, "disabled");
       }

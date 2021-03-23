@@ -1,7 +1,8 @@
 import History from "quill/modules/history";
-import Emitter from "quill/core/emitter";
-import { StringMap } from "quill";
+import Quill, { StringMap } from "quill";
 import FormatEvent from "../../modules/format-event";
+
+export type HandlerFunc = (quill: Quill, formatValue?: string) => string | void;
 
 export interface ComponentUpdateOptions {
   formats: StringMap;

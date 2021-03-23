@@ -20,7 +20,7 @@ export default defineComponent({
             console.log(2222);
           },
           content: "sss",
-          disabled: false
+          disabled: false,
         });
 
         editor.onUpdate((html: string, text: string) => {
@@ -30,7 +30,7 @@ export default defineComponent({
     });
 
     return { editorRef };
-  }
+  },
 });
 </script>
 

@@ -12,6 +12,7 @@ import Image from "../formats/image";
 import DividerBlot from "../formats/divider";
 import Toolbar from "../modules/toolbar";
 import BeeTheme from "../themes/bee";
+import Uploader from "../modules/uploader";
 
 Quill.register(
   {
@@ -40,6 +41,7 @@ Quill.register(
     "modules/toolbar": Toolbar,
 
     // "modules/resize": Resize,
+    "modules/uploader": Uploader,
 
     "themes/bee": BeeTheme,
   },

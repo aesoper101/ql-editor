@@ -2,7 +2,7 @@ import {
   AbstractComponent,
   ComponentCreateOptions,
   ComponentOptions,
-  ComponentUpdateOptions
+  ComponentUpdateOptions,
 } from "./type";
 import { StringMap } from "quill";
 import FormatEvent from "../../modules/format-event";
