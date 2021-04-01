@@ -17,6 +17,9 @@ import TodoItem from "../formats/todo";
 import OrderedItem from "../formats/ordered";
 import BulletItem from "../formats/bullet";
 import { ColorStyle } from "../formats/color";
+import OrderedContainer from "../formats/ordered";
+import TodoContainer from "../formats/todo";
+import BulletContainer from "../formats/bullet";
 
 Quill.register(
   {
@@ -37,6 +40,9 @@ Quill.register(
     "formats/lineHeight": LineHeightStyle,
 
     "formats/link": Link,
+    "format/ordered-container": OrderedContainer,
+    "format/bullet-container": BulletContainer,
+    "format/todo-container": TodoContainer,
     "formats/todo": TodoItem,
     "formats/ordered": OrderedItem,
     "formats/bullet": BulletItem,

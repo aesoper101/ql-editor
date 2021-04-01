@@ -101,14 +101,14 @@ class Editor {
       this.blurCallback && this.blurCallback();
     });
 
-    this.quill.on("selection-change", (range: RangeStatic) => {
-      console.log(this.quill.getFormat());
-      if (!range) {
-        this.quill.emitter.emit("blur");
-      } else {
-        this.quill.emitter.emit("focus");
-      }
-    });
+    // this.quill.on("selection-change", (range: RangeStatic) => {
+    //   console.log(this.quill.getFormat());
+    //   if (!range) {
+    //     this.quill.emitter.emit("blur");
+    //   } else {
+    //     this.quill.emitter.emit("focus");
+    //   }
+    // });
   }
 
   emitter(): Emitter {

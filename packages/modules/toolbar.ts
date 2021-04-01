@@ -155,9 +155,14 @@ class Toolbar extends Module {
     }
 
     this.quill.on("editor-change", () => {
+      const selection = this.quill.getSelection();
       const data = {
-        formats: this.quill.getFormat() || {},
+        formats: {},
       };
+      if (selection) {
+        data.formats = this.quill.getFormat(selection);
+      }
+
       this.componentList.forEach((component) => {
         component.update(data);
       });

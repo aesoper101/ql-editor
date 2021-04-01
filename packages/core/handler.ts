@@ -1,6 +1,7 @@
 import { HandlerFunc } from "../ui/toolbar/type";
 import Uploader from "../modules/uploader";
 import mimelite from "mime/lite";
+import LinkTooltip from "../ui/linktooltip";
 
 export const DEFAULT_HANDLERS: Record<string, HandlerFunc> = {
   image: (quill) => {
@@ -115,5 +116,9 @@ export const DEFAULT_HANDLERS: Record<string, HandlerFunc> = {
   },
   redo: (quill) => {
     quill.history.redo();
+  },
+  link: (quill) => {
+    const tooltip = new LinkTooltip(quill);
+    tooltip.edit();
   },
 };

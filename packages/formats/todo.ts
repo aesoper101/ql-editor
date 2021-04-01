@@ -26,9 +26,9 @@ class TodoItem extends Block {
     return domNode.getAttribute("data-todo-list") || undefined;
   }
 
-  static register() {
-    Quill.register(TodoContainer);
-  }
+  // static register() {
+  //   Quill.register(TodoContainer);
+  // }
 
   constructor(scroll: Scroll, domNode: HTMLElement) {
     super(scroll, domNode);

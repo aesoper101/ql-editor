@@ -23,15 +23,12 @@ class OrderedItem extends Block {
   }
 
   static formats(domNode: HTMLElement) {
-    // if (domNode.parentElement?.style.listStyle) {
-    //   return domNode.parentElement?.style.listStyle;
-    // }
     return domNode.getAttribute("data-list-style") || undefined;
   }
 
-  static register() {
-    Quill.register(OrderedContainer);
-  }
+  // static register() {
+  //   Quill.register(OrderedContainer);
+  // }
 
   constructor(scroll: Scroll, domNode: HTMLElement) {
     super(scroll, domNode);

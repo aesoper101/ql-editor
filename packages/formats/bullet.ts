@@ -26,9 +26,9 @@ class BulletItem extends Block {
     return domNode.getAttribute("data-list-style") || undefined;
   }
 
-  static register() {
-    Quill.register(BulletContainer);
-  }
+  // static register() {
+  //   Quill.register(BulletContainer);
+  // }
 
   constructor(scroll: Scroll, domNode: HTMLElement) {
     super(scroll, domNode);
