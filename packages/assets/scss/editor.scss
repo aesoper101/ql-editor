@@ -1,0 +1,139 @@
+
+.ql-editor {
+  box-sizing: border-box;
+  counter-reset: list-0;
+  line-height: 1.42;
+  height: 100%;
+  outline: none;
+  overflow-y: auto;
+  padding: 12px 15px;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+  * {
+    margin: 0;
+  }
+
+  ol, ul {
+    list-style: none outside none;
+  }
+
+  li > .ql-ui:before {
+    display: inline-block;
+    margin-left: -1.5em;
+    margin-right: 0.3em;
+    text-align: right;
+    white-space: nowrap;
+    width: 1.2em;
+  }
+
+
+  li[class=bee-ql-ordered] {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+  }
+
+  li[class=bee-ql-ordered][data-list-style="decimal"] > .ql-ui:before {
+    content: counter(list-0, decimal) '. ';
+  }
+
+  li[class=bee-ql-ordered][data-list-style="cjk-ideographic"] > .ql-ui:before {
+    content: counter(list-0, cjk-ideographic) '. ';
+  }
+
+  li[class=bee-ql-ordered][data-list-style="lower-alpha"] > .ql-ui:before {
+    content: counter(list-0, lower-alpha) '. ';
+  }
+
+  li[class=bee-ql-ordered][data-list-style="decimal-right-comma"] > .ql-ui:before {
+    content: counter(list-0, decimal) '). ';
+  }
+
+  li[class=bee-ql-ordered][data-list-style="decimal-comma"] > .ql-ui:before {
+    content: "(" counter(list-0, decimal) ').  ';
+  }
+
+
+  li[class=bee-ql-bullet][data-list-style="prismatic"] > .ql-ui:before {
+    content: "◆";
+  }
+
+  li[class=bee-ql-bullet][data-list-style="disc"] > .ql-ui:before {
+    content: "●";
+  }
+
+  li[class=bee-ql-bullet][data-list-style="check"] > .ql-ui:before {
+    content: "✓";
+  }
+
+
+  li[class=bee-ql-todo][data-todo-list="true"] {
+    text-decoration: line-through;
+  }
+
+  li[class=bee-ql-todo][data-todo-list="true"] > .ql-ui:before {
+    content: "✔";
+  }
+
+  li[class=bee-ql-todo][data-todo-list="false"] > .ql-ui:before {
+    content: "▢";
+  }
+
+  .ql-code-block-container {
+    border-top-width: 0;
+  }
+
+  .ql-code-block-container {
+    margin: 8px 100px;
+    padding: 0;
+    line-height: 24px;
+    font-family: "Source Code Pro";
+    background-color: #f7f7f7;
+    border: 1px solid rgba(208, 212, 217, 0.5);
+    color: #41464b;
+    border-radius: 0;
+    font-size: 14px;
+    counter-reset: section;
+
+    .ql-code-block {
+
+      position: relative;
+      padding-left: 10px;
+      padding-right: 10px;
+      outline: none;
+
+      &:after {
+        counter-increment: section;
+        content: counter(section);
+        white-space: pre;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: calc(100% + 5px);
+        text-align: right;
+        font-size: 12px;
+        color: #d0d4d9;
+        line-height: 24px;
+        max-width: 50px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+
+  blockquote {
+    outline: none;
+    border-left: 4px solid #f0f0f0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 16px;
+  }
+
+
+}
+

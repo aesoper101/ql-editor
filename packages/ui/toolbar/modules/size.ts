@@ -2,6 +2,7 @@ import { Component } from "../component";
 import { DOMUtils } from "@aesoper/normal-utils";
 import { ComponentUpdateOptions } from "../type";
 import { SizeMenu } from "./menus/size";
+import _ from "lodash";
 
 export class SizeComponent extends Component {
   protected root: HTMLElement | null = null;
@@ -77,7 +78,7 @@ export class SizeComponent extends Component {
         }
       });
       if (!hasMatch) {
-        this.updateSize(this.currentFormats[this.format].replace("px", ""));
+        this.updateSize(_.replace(this.currentFormats[this.format], "px", ""));
       }
     } else {
       if (this.options.length > 0 && this.content) {
@@ -137,7 +138,7 @@ export class SizeComponent extends Component {
         popper.hide();
       });
 
-      DOMUtils.addEventListener(document.body, "mouseup", () => {
+      DOMUtils.addEventListener(document.body, "mousedown", () => {
         this.root?.classList.remove("selected");
         popper.hide();
       });

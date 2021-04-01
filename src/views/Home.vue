@@ -15,3 +15,12 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.test li::before {
+  content: "(" counter(num, decimal) ")";
+  color: #f00;
+}
+.test li {
+  counter-increment: num;
+}
+</style>

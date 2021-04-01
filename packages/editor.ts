@@ -37,6 +37,11 @@ class Editor {
           //   return Promise.resolve({ data: "======", type: "image", url: url });
           // },
         },
+        keyboard: {
+          bindings: {
+
+          },
+        },
       },
     });
 
@@ -49,6 +54,30 @@ class Editor {
     this.quill.emitter.on("ready", () => {
       options?.readyCallback && options.readyCallback();
     });
+
+    // this.quill.keyboard.addBinding(
+    //   { key: "Enter" },
+    //   // { shiftKey: false },
+    //   { collapsed: false, format: ["ordered"], empty: false, shiftKey: false },
+    //   () => {
+    //     console.log("=======================================");
+    //     return true;
+    //   }
+    // );
+
+    // this.quill.keyboard.addBinding(
+    //   { key: "ENTER" },
+    //   {
+    //     empty: true, // implies collapsed: true and offset: 0
+    //     format: ["ordered"],
+    //   },
+    //   (range, context) => {
+    //     console.log("-------------");
+    //     this.quill.format("list", false);
+    //   }
+    // );
+
+    console.log(this.quill.keyboard);
 
     this.listen();
 
@@ -73,6 +102,7 @@ class Editor {
     });
 
     this.quill.on("selection-change", (range: RangeStatic) => {
+      console.log(this.quill.getFormat());
       if (!range) {
         this.quill.emitter.emit("blur");
       } else {

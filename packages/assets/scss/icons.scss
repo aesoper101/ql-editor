@@ -165,7 +165,7 @@
       background-image: url(../icons/attachment.svg);
     }
 
-    &-code {
+    &-code, &-code-block {
       background-image: url(../icons/code.svg);
     }
   }
@@ -175,35 +175,35 @@
     width: 48px;
     height: 52px;
 
-    &-ordered-sequence1 {
+    &-ordered-cjk-ideographic {
       background-image: url(../icons/ordered-sequence1.svg);
     }
 
-    &-ordered-sequence2 {
+    &-ordered-decimal {
       background-image: url(../icons/ordered-sequence2.svg);
     }
 
-    &-ordered-sequence3 {
+    &-ordered-circle-decimal {
       background-image: url(../icons/ordered-sequence3.svg);
     }
 
-    &-ordered-sequence4 {
+    &-ordered-lower-alpha {
       background-image: url(../icons/ordered-sequence4.svg);
     }
 
-    &-ordered-sequence5 {
+    &-ordered-decimal-right-comma {
       background-image: url(../icons/ordered-sequence5.svg);
     }
 
-    &-ordered-sequence6 {
+    &-ordered-decimal-comma{
       background-image: url(../icons/ordered-sequence6.svg);
     }
 
-    &-bullet-sequence1{
+    &-bullet-disc{
       background-image: url(../icons/bullet-sequence1.svg);
     }
 
-    &-bullet-sequence2{
+    &-bullet-prismatic{
       background-image: url(../icons/bullet-sequence2.svg);
     }
 
@@ -211,7 +211,7 @@
       background-image: url(../icons/bullet-sequence3.svg);
     }
 
-    &-bullet-sequence4{
+    &-bullet-check{
       background-image: url(../icons/bullet-sequence4.svg);
     }
   }

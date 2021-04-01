@@ -5,6 +5,8 @@ declare module "quill/blots/scroll" {
 
   declare class Scroll extends ScrollBlot {
     constructor(registry: Registry, domNode: HTMLDivElement, { emitter });
+
+    isEnabled(): boolean;
   }
 
   export default Scroll;

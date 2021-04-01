@@ -11,6 +11,7 @@ export interface ComponentUpdateOptions {
 export interface ComponentOptions {
   value: string;
   label: string;
+  isDefault?: boolean;
 }
 
 export type CssStyle = Partial<CSSStyleDeclaration>;

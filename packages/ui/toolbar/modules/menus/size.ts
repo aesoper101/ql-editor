@@ -49,7 +49,7 @@ export class SizeMenu {
           this.constructorOptions.itemCallback(value);
         this.hide();
       });
-      DOMUtils.addEventListener(item, "mouseup", (evt: Event) => {
+      DOMUtils.addEventListener(item, "mousedown", (evt: Event) => {
         evt.stopPropagation();
       });
     });

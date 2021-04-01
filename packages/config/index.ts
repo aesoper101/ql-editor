@@ -16,7 +16,7 @@ export const DEFAULT_TOOLBAR_OPTIONS: Options = {
     [
       {
         font: [
-          { label: "宋体", value: "宋体" },
+          { label: "宋体", value: "宋体", isDefault: true },
           { label: "微软雅黑", value: "微软雅黑" },
           { label: "Comic Sans MS", value: "Comic Sans MS" },
           { label: "Times New Roman", value: "Times New Roman" },
@@ -149,7 +149,7 @@ export const DEFAULT_TOOLBAR_OPTIONS: Options = {
         size: [
           { label: "10", value: "10px" },
           { label: "12", value: "12px" },
-          { label: "14", value: "14px" },
+          { label: "14", value: "14px", isDefault: true },
           { label: "16", value: "16px" },
           { label: "18", value: "18px" },
           { label: "20", value: "20px" },
@@ -210,21 +210,21 @@ export const DEFAULT_TOOLBAR_OPTIONS: Options = {
       {
         ordered: [
           { label: "无", value: "" },
-          { label: "一、二、三", value: "1" },
-          { label: "1.2.3", value: "2" },
-          { label: "①②③", value: "3" },
-          { label: "a,b,c", value: "4" },
-          { label: "1)2)3)", value: "5" },
-          { label: "(1)(2)(3)", value: "6" },
+          { label: "一、二、三", value: "cjk-ideographic" },
+          { label: "1.2.3", value: "decimal" },
+          // { label: "①②③", value: "circle-decimal" },
+          { label: "a,b,c", value: "lower-alpha" },
+          { label: "1)2)3)", value: "decimal-right-comma" },
+          { label: "(1)(2)(3)", value: "decimal-comma" },
         ],
       },
       {
         bullet: [
           { label: "无", value: "" },
-          { label: "带填充效果的大圆项目符号", value: "1" },
-          { label: "带填充效果的钻石棱形项目符号", value: "2" },
-          { label: "箭头项目符号", value: "3" },
-          { label: "选中标记项目符号", value: "4" },
+          { label: "带填充效果的大圆项目符号", value: "disc" },
+          { label: "带填充效果的钻石棱形项目符号", value: "prismatic" },
+          // { label: "箭头项目符号", value: "3" },
+          { label: "选中标记项目符号", value: "check" },
         ],
       },
     ],
@@ -237,7 +237,7 @@ export const DEFAULT_TOOLBAR_OPTIONS: Options = {
           { label: "视频", value: "video" },
           { label: "音频", value: "audio" },
           { label: "水平线", value: "divider" },
-          { label: "代码块", value: "code" },
+          { label: "代码块", value: "code-block" },
           { label: "引用", value: "blockquote" },
           { label: "附件", value: "attachment" },
         ],

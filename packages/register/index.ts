@@ -13,6 +13,10 @@ import DividerBlot from "../formats/divider";
 import Toolbar from "../modules/toolbar";
 import BeeTheme from "../themes/bee";
 import Uploader from "../modules/uploader";
+import TodoItem from "../formats/todo";
+import OrderedItem from "../formats/ordered";
+import BulletItem from "../formats/bullet";
+import { ColorStyle } from "../formats/color";
 
 Quill.register(
   {
@@ -21,16 +25,21 @@ Quill.register(
     "attributors/style/size": SizeStyle,
     "attributors/style/indent": IndentStyle,
     "attributors/style/lineHeight": LineHeightStyle,
+    "attributors/style/color": ColorStyle,
 
     "formats/align": AlignStyle,
     "formats/font": FontStyle,
     "formats/size": SizeStyle,
     "formats/float": FloatStyle,
+    "formats/color": ColorStyle,
 
     "formats/indent": IndentStyle,
     "formats/lineHeight": LineHeightStyle,
 
     "formats/link": Link,
+    "formats/todo": TodoItem,
+    "formats/ordered": OrderedItem,
+    "formats/bullet": BulletItem,
 
     "formats/image": Image,
     "formats/video": Video,

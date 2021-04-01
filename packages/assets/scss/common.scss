@@ -1,10 +1,3 @@
-article, aside, blockquote, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
-  margin: 0;
-  padding: 0;
-  outline: none;
-}
-
-
 %scrollbar {
 
   &::-webkit-scrollbar-thumb {
@@ -31,11 +24,16 @@ article, aside, blockquote, button, code, dd, details, div, dl, dt, fieldset, fi
   position: relative;
   flex-direction: column;
 
+  article, aside, blockquote, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
+    outline: none;
+  }
+
 
   * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     scrollbar-width: thin;
+    outline: none;
   }
 
 }

@@ -60,8 +60,7 @@ export class ListMenu {
     if (option.value == "") {
       iconWrap.innerText = option.label || "无";
     } else {
-      const iconName =
-        this.constructorOptions.format + "-sequence" + option.value;
+      const iconName = this.constructorOptions.format + "-" + option.value;
       const icon = DOMUtils.createElement(
         "i",
         "ql-icon",
