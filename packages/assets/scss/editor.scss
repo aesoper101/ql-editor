@@ -13,6 +13,8 @@
   white-space: pre-wrap;
   word-wrap: break-word;
 
+  @extend %scrollbar;
+
   * {
     margin: 0;
   }
@@ -87,7 +89,7 @@
   }
 
   .ql-code-block-container {
-    margin: 8px 100px;
+    //margin: 8px 100px;
     padding: 0;
     line-height: 24px;
     font-family: "Source Code Pro";

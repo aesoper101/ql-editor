@@ -190,7 +190,7 @@ class Toolbar extends Module {
       return;
     }
 
-    const range = this.quill.getSelection();
+    const range = this.quill.getSelection(true);
     if (this.handlers[format] != null) {
       const result = this.handlers[format].call(this, this.quill, formatValue);
       if (typeof result === "string") {
@@ -202,15 +202,12 @@ class Toolbar extends Module {
       Object.getPrototypeOf(query).prototype instanceof Parchment.EmbedBlot
     ) {
       if (!range) return;
-      this.quill.updateContents(
-        new Delta()
-          .retain(range.index)
-          .delete(range.length)
-          .insert("\n")
-          .insert({ [format]: formatValue || true })
-          .insert("\n"),
-        "user"
-      );
+      const delta = new Delta()
+        .retain(range.index)
+        .delete(range.length)
+        .insert({ [format]: formatValue || true });
+      this.quill.updateContents(delta, "user");
+      this.quill.setSelection(range.index + delta.changeLength(), 0);
     } else {
       this.doUpdateFormat(format, formatValue);
     }

@@ -26,9 +26,9 @@ class OrderedItem extends Block {
     return domNode.getAttribute("data-list-style") || undefined;
   }
 
-  // static register() {
-  //   Quill.register(OrderedContainer);
-  // }
+  static register() {
+    Quill.register(OrderedContainer, true);
+  }
 
   constructor(scroll: Scroll, domNode: HTMLElement) {
     super(scroll, domNode);

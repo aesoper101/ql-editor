@@ -1,7 +1,9 @@
 .ql-docs-toolbar {
-  box-shadow: 0 2px 4px 0 transparent;
+  //box-shadow: 0 2px 4px 0 transparent;
   transition: box-shadow .3s ease-in-out;
   z-index: 99;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  background: #fff;
 
   &-wrap {
     position: relative;

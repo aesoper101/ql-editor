@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <ql-editor />
+    <ql-editor v-model:value="value" />
+    {{ value }}
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import QlEditor from "../../packages/QlEditor.vue";
+import { defineComponent, ref } from "vue";
+import QlEditor from "../../packages/index.vue";
 
 export default defineComponent({
   components: { QlEditor },
   setup() {
-    return {};
+    const value = ref("");
+    return { value };
   },
 });
 </script>

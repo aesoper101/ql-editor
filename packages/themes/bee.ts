@@ -1,4 +1,3 @@
-import { Blot } from "parchment/src/blot/abstract/blot";
 import { Quill, QuillOptionsStatic } from "quill";
 import Theme from "quill/core/theme";
 import { DEFAULT_TOOLBAR_OPTIONS } from "../config";
@@ -16,6 +15,7 @@ class BeeTheme extends Theme {
     super(quill, options);
 
     this.addModule("resize");
+    this.addModule("imageDisplay");
 
     document.body.addEventListener("mousedown", () => {
       this.quill.container.querySelectorAll(".bee-tooltip").forEach((value) => {

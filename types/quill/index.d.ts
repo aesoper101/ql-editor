@@ -245,7 +245,7 @@ export class Quill implements EventEmitter {
   getSelection(focus?: false): RangeStatic | null;
   hasFocus(): boolean;
   setSelection(index: number, length: number, source?: Sources): void;
-  setSelection(range: RangeStatic, source?: Sources): void;
+  setSelection(range: RangeStatic | null, source?: Sources): void;
   getSemanticHTML(index: number, length: number): string;
   scrollIntoView(): void;
 

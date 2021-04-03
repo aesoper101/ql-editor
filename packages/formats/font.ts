@@ -91,7 +91,7 @@ const config = {
     "Segoe UI Symbol",
     "SimSun-ExtB",
     "Sitka Banner",
-    "Sitka Display",
+    "Sitka ImageDisplay",
     "Sitka Heading",
     "Sitka Small",
     "Sitka Subheading",

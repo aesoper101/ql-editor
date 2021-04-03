@@ -193,6 +193,35 @@
     }
   }
 
+  &-26 {
+    width: 26px;
+    height: 26px;
+
+    &-zoom-in {
+      background-image: url(../icons/zoom-in.svg);
+    }
+
+    &-zoom-out {
+      background-image: url(../icons/zoom-out.svg);
+    }
+
+    &-download {
+      background-image: url(../icons/download.svg);
+    }
+
+    &-rotate {
+      background-image: url(../icons/rotate.svg);
+    }
+
+    &-reset-zoom {
+      background-image: url(../icons/reset-zoom.svg);
+    }
+
+    &-exit {
+      background-image: url(../icons/exit.svg);
+    }
+  }
+
   &-big {
     width: 48px;
     height: 52px;

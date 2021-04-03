@@ -1,6 +1,8 @@
 import Module from "quill/core/module";
 import Quill, { StringMap } from "quill";
 import { DOMUtils } from "@aesoper/normal-utils";
+import hotkeys from "hotkeys-js";
+import ImageDisplay from "./image-display";
 
 const allResizeBlotName = ["image", "video", "iframe"];
 
@@ -31,13 +33,17 @@ class Resize extends Module {
 
   preSize = { width: 0, height: 0 };
 
+  imageDisplay: ImageDisplay | null = null;
+
   constructor(quill: Quill, options: StringMap) {
     super(quill, options);
+
+    this.quill.setSelection(null);
 
     document.execCommand("enableObjectResizing", false, "false");
 
     this.quill.root.addEventListener(
-      "mousedown",
+      "click",
       this.listenEditClick.bind(this),
       false
     );
@@ -45,6 +51,7 @@ class Resize extends Module {
 
   private createResizeBox(isImageBlot = true) {
     const root = DOMUtils.createElement("div", "bee-resize-box");
+    root.setAttribute("tabindex", "0");
 
     cursorList.forEach((cursor) => {
       if (!isImageBlot && noImageCursorList.includes(cursor)) {
@@ -60,6 +67,28 @@ class Resize extends Module {
     return root;
   }
 
+  private previewImage() {
+    const { image } = this.currentBlot.value();
+    if (image) {
+      this.imageDisplay = this.quill.getModule("imageDisplay") as ImageDisplay;
+      this.imageDisplay.preview(image);
+    }
+  }
+
+  private deleteBlot(evt: KeyboardEvent) {
+    if (
+      evt.target === this.overlay &&
+      (evt.code === "Delete" || evt.code === "Backspace")
+    ) {
+      if (this.currentBlot) {
+        this.currentBlot.deleteAt(0);
+        this.currentBlot.parent && this.currentBlot.parent.optimize();
+        this.hide();
+        hotkeys.unbind("*");
+      }
+    }
+  }
+
   private createFloatBox(box: HTMLElement, isImageBlot = true) {
     const floatBox = DOMUtils.createElement("div", "float-box");
 
@@ -67,7 +96,32 @@ class Resize extends Module {
     this.createFloatBoxItem(floatBox, "right");
     this.createFloatBoxItem(floatBox, "left");
 
+    if (isImageBlot) {
+      this.createCropItem(floatBox);
+    }
+
     DOMUtils.appendChild(box, floatBox);
+  }
+
+  private createCropItem(box: HTMLElement) {
+    const sep = DOMUtils.createElement("div", "sep");
+    const item = DOMUtils.createElement("div", "float-item");
+    const icon = DOMUtils.createElement(
+      "i",
+      "ql-icon",
+      "ql-icon-24",
+      "ql-icon-24-crop"
+    );
+
+    DOMUtils.appendChild(item, icon);
+    DOMUtils.appendChild(box, sep);
+    DOMUtils.appendChild(box, item);
+
+    item.addEventListener("click", (evt) => {
+      evt.stopPropagation();
+      item.classList.add("active");
+      alert("开发中...");
+    });
   }
 
   private createFloatBoxItem(box: HTMLElement, float: string) {
@@ -81,6 +135,10 @@ class Resize extends Module {
 
     DOMUtils.appendChild(item, icon);
     DOMUtils.appendChild(box, item);
+    const cssFloat = this.activeElement?.style.float || "none";
+    if (float === cssFloat) {
+      item.classList.add("active");
+    }
 
     item.addEventListener("click", () => {
       box.querySelectorAll("[class^=float-item]").forEach((value) => {
@@ -243,6 +301,7 @@ class Resize extends Module {
     if (this.overlay) {
       this.overlay.style.marginTop = -1 * this.quill.root.scrollTop + "px";
     }
+    this.calcPosition();
   }
 
   private show(isImageBlot = true) {
@@ -253,9 +312,17 @@ class Resize extends Module {
     this.calcPosition();
 
     this.quill.root.addEventListener("input", this.hide.bind(this), true);
-    this.quill.root.addEventListener(
-      "scroll",
-      this.updateOverlayPosition.bind(this)
+    window.addEventListener("resize", this.updateOverlayPosition.bind(this));
+
+    hotkeys(
+      "*",
+      { element: this.overlay, keydown: true },
+      this.deleteBlot.bind(this)
+    );
+    this.overlay.addEventListener(
+      "dblclick",
+      this.previewImage.bind(this),
+      false
     );
   }
 
@@ -263,15 +330,18 @@ class Resize extends Module {
     if (!this.overlay) {
       return;
     }
+
+    this.quill.root.removeEventListener("input", this.hide.bind(this), true);
+    window.removeEventListener("resize", this.updateOverlayPosition.bind(this));
+    this.overlay.removeEventListener(
+      "dblclick",
+      this.previewImage.bind(this),
+      false
+    );
+
     this.overlay.parentNode?.removeChild(this.overlay);
     this.overlay = null;
     this.activeElement = null;
-
-    this.quill.root.removeEventListener("input", this.hide.bind(this), true);
-    this.quill.root.removeEventListener(
-      "scroll",
-      this.updateOverlayPosition.bind(this)
-    );
   }
 }
 

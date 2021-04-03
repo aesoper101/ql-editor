@@ -17,10 +17,8 @@ import TodoItem from "../formats/todo";
 import OrderedItem from "../formats/ordered";
 import BulletItem from "../formats/bullet";
 import { ColorStyle } from "../formats/color";
-import OrderedContainer from "../formats/ordered";
-import TodoContainer from "../formats/todo";
-import BulletContainer from "../formats/bullet";
 import Resize from "../modules/resize";
+import ImageDisplay from "../modules/image-display";
 
 Quill.register(
   {
@@ -41,9 +39,7 @@ Quill.register(
     "formats/lineHeight": LineHeightStyle,
 
     "formats/link": Link,
-    "format/ordered-container": OrderedContainer,
-    "format/bullet-container": BulletContainer,
-    "format/todo-container": TodoContainer,
+
     "formats/todo": TodoItem,
     "formats/ordered": OrderedItem,
     "formats/bullet": BulletItem,
@@ -58,6 +54,7 @@ Quill.register(
 
     "modules/resize": Resize,
     "modules/uploader": Uploader,
+    "modules/imageDisplay": ImageDisplay,
 
     "themes/bee": BeeTheme,
   },

@@ -128,7 +128,7 @@ export const DEFAULT_TOOLBAR_OPTIONS: Options = {
           { label: "Segoe UI Symbol", value: "Segoe UI Symbol" },
           { label: "SimSun-ExtB", value: "SimSun-ExtB" },
           { label: "Sitka Banner", value: "Sitka Banner" },
-          { label: "Sitka Display", value: "Sitka Display" },
+          { label: "Sitka ImageDisplay", value: "Sitka ImageDisplay" },
           { label: "Sitka Heading", value: "Sitka Heading" },
           { label: "Sitka Small", value: "Sitka Small" },
           { label: "Sitka Subheading", value: "Sitka Subheading" },
@@ -233,22 +233,18 @@ export const DEFAULT_TOOLBAR_OPTIONS: Options = {
       {
         insert: [
           { label: "图片", value: "image" },
-          { label: "表格", value: "table" },
+          // { label: "表格", value: "table" },
           { label: "链接", value: "link" },
           { label: "视频", value: "video" },
           { label: "音频", value: "audio" },
           { label: "水平线", value: "divider" },
           { label: "代码块", value: "code-block" },
           { label: "引用", value: "blockquote" },
-          { label: "附件", value: "attachment" },
+          // { label: "附件", value: "attachment" },
         ],
       },
-      "print",
+      // "print",
     ],
   ],
-  handlers: {
-    video: () => {
-      return "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4";
-    },
-  },
+  handlers: {},
 };

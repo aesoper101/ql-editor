@@ -121,4 +121,5 @@ export const DEFAULT_HANDLERS: Record<string, HandlerFunc> = {
     const tooltip = new LinkTooltip(quill);
     tooltip.edit();
   },
+  // print: (quill) => {},
 };

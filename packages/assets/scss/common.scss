@@ -24,12 +24,36 @@
   position: relative;
   flex-direction: column;
 
+
   article, aside, blockquote, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
     outline: none;
   }
 
+  &.bordered {
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+
+    .ql-docs-toolbar-container {
+      justify-content: left;
+    }
+  }
+
+  &.read {
+    .ql-container {
+      width: 85%;
+      margin: 20px auto;
+      padding: 30px;
+      box-shadow: rgba(158, 161, 165, .4) 0px 2px 12px 0px;
+
+      .ql-docs-toolbar-container {
+        justify-content: center;
+      }
+    }
+  }
+
   .ql-container {
     position: relative;
+    background: #fff;
+    padding: 10px;
   }
 
   * {
@@ -191,8 +215,105 @@
         .ql-icon-24-float-left {
           background-image: url(../icons/float-left-active.svg)!important;
         }
+
+        .ql-icon-24-crop {
+          background-image: url(../icons/crop-ok.svg)!important;
+        }
       }
 
+
+    }
+
+    .sep {
+      margin-top: 8px;
+      margin-left: 5px;
+      width: 1px;
+      background: #ebebeb;
+      height: 15px;
+      line-height: 15px;
+      opacity: 1;
+    }
+  }
+}
+
+.bee-image-preview {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 10004;
+  overflow: auto;
+
+  &__box {
+    cursor: move;
+    position: absolute;
+    z-index: 10005;
+    border: 4px solid #fff;
+    background: #fff;
+    border-radius: 3px;
+
+    .image {
+      display: block;
+      position: static;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+    }
+  }
+
+
+  &__mask {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__tools {
+    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    padding: 0 5px;
+    left: 50%;
+    margin-left: -163px;
+    z-index: 10006;
+    height: 56px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    border: solid 1px #f2f2f2;
+    min-width: 326px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+    .tool-item {
+      display: inline-flex;
+      margin: auto 10px;
+      cursor: pointer;
+      position: relative;
+      height: 24px;
+
+      .image-zoom-percent {
+        position: relative;
+        font-size: 16px;
+        color: #676767;
+      }
+
+      .separate-line {
+        position: relative;
+        display: inline-flex;
+        margin-left: 22px;
+        cursor: default;
+        width: 1px;
+        height: 30px;
+        margin-top: -2px;
+        background: #e7e7e7;
+      }
     }
   }
 }
