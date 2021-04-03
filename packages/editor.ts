@@ -37,11 +37,6 @@ class Editor {
           //   return Promise.resolve({ data: "======", type: "image", url: url });
           // },
         },
-        keyboard: {
-          bindings: {
-
-          },
-        },
       },
     });
 

@@ -15,11 +15,13 @@ class BeeTheme extends Theme {
     }
     super(quill, options);
 
+    this.addModule("resize");
+
     document.body.addEventListener("mousedown", () => {
       this.quill.container.querySelectorAll(".bee-tooltip").forEach((value) => {
         this.quill.container.removeChild(value);
       });
-    })
+    });
     this.quill.on("selection-change", (range, oldRange, source) => {
       if (range == null) return;
       if (range.length === 0 && source === "user") {

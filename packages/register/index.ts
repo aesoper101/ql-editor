@@ -20,6 +20,7 @@ import { ColorStyle } from "../formats/color";
 import OrderedContainer from "../formats/ordered";
 import TodoContainer from "../formats/todo";
 import BulletContainer from "../formats/bullet";
+import Resize from "../modules/resize";
 
 Quill.register(
   {
@@ -55,7 +56,7 @@ Quill.register(
 
     "modules/toolbar": Toolbar,
 
-    // "modules/resize": Resize,
+    "modules/resize": Resize,
     "modules/uploader": Uploader,
 
     "themes/bee": BeeTheme,
