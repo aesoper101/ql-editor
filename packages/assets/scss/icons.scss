@@ -171,6 +171,28 @@
   }
 
 
+  &-24 {
+    width: 24px;
+    height: 24px;
+
+    &-float-none {
+      background-image: url(../icons/float-full.svg);
+    }
+
+    &-float-right {
+      background-image: url(../icons/float-right.svg);
+    }
+
+    &-float-left {
+      background-image: url(../icons/float-left.svg);
+    }
+
+
+    &-crop {
+      background-image: url(../icons/crop.svg);
+    }
+  }
+
   &-big {
     width: 48px;
     height: 52px;

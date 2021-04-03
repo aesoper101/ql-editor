@@ -15,6 +15,8 @@ const cursorList = [
   "w-resize",
 ];
 
+const noImageCursorList = ["n-resize", "s-resize", "e-resize", "w-resize"];
+
 class Resize extends Module {
   private overlay: HTMLElement | null = null;
 
@@ -41,16 +43,55 @@ class Resize extends Module {
     );
   }
 
-  private createResizeBox() {
+  private createResizeBox(isImageBlot = true) {
     const root = DOMUtils.createElement("div", "bee-resize-box");
 
     cursorList.forEach((cursor) => {
+      if (!isImageBlot && noImageCursorList.includes(cursor)) {
+        return;
+      }
       this.addBox(root, cursor);
     });
+
+    this.createFloatBox(root, isImageBlot);
 
     this.quill.addContainer(root);
 
     return root;
+  }
+
+  private createFloatBox(box: HTMLElement, isImageBlot = true) {
+    const floatBox = DOMUtils.createElement("div", "float-box");
+
+    this.createFloatBoxItem(floatBox, "none");
+    this.createFloatBoxItem(floatBox, "right");
+    this.createFloatBoxItem(floatBox, "left");
+
+    DOMUtils.appendChild(box, floatBox);
+  }
+
+  private createFloatBoxItem(box: HTMLElement, float: string) {
+    const item = DOMUtils.createElement("div", "float-item");
+    const icon = DOMUtils.createElement(
+      "i",
+      "ql-icon",
+      "ql-icon-24",
+      "ql-icon-24-float-" + float
+    );
+
+    DOMUtils.appendChild(item, icon);
+    DOMUtils.appendChild(box, item);
+
+    item.addEventListener("click", () => {
+      box.querySelectorAll("[class^=float-item]").forEach((value) => {
+        value.classList.remove("active");
+      });
+      item.classList.add("active");
+      if (this.activeElement) {
+        this.activeElement.style.float = float;
+        this.calcPosition();
+      }
+    });
   }
 
   private addBox(resizeBox: HTMLElement, cursor: string) {
@@ -95,8 +136,6 @@ class Resize extends Module {
     if (height > 0) {
       this.ratio = width / height;
     }
-
-    console.log("this.ratio ", this.ratio);
   }
 
   changeSize(cssCursor: string, evt: MouseEvent) {
@@ -168,7 +207,7 @@ class Resize extends Module {
         this.preSize.height = target.offsetHeight;
 
         isShow = true;
-        this.show();
+        this.show(blot.statics.blotName === "image");
       } else {
         if (this.activeElement) {
           this.hide();
@@ -206,12 +245,18 @@ class Resize extends Module {
     }
   }
 
-  private show() {
+  private show(isImageBlot = true) {
     if (this.overlay) {
       return;
     }
-    this.overlay = this.createResizeBox();
+    this.overlay = this.createResizeBox(isImageBlot);
     this.calcPosition();
+
+    this.quill.root.addEventListener("input", this.hide.bind(this), true);
+    this.quill.root.addEventListener(
+      "scroll",
+      this.updateOverlayPosition.bind(this)
+    );
   }
 
   private hide() {
@@ -221,6 +266,12 @@ class Resize extends Module {
     this.overlay.parentNode?.removeChild(this.overlay);
     this.overlay = null;
     this.activeElement = null;
+
+    this.quill.root.removeEventListener("input", this.hide.bind(this), true);
+    this.quill.root.removeEventListener(
+      "scroll",
+      this.updateOverlayPosition.bind(this)
+    );
   }
 }
 

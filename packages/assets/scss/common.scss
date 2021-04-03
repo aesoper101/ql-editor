@@ -158,7 +158,7 @@
     -webkit-box-pack: justify;
     justify-content: space-between;
     position: absolute;
-    margin: 0.3em 0px;
+    margin: 0.3em 0;
     padding: 8px 7px;
     font-size: 14px;
     font-weight: 400;
@@ -179,15 +179,20 @@
       height: 27px;
       line-height: 26px;
 
-      .active {
-        & [fill="#525C6F"] {
-          fill: rgb(64, 159, 255);
+      &.active {
+        .ql-icon-24-float-none {
+          background-image: url(../icons/float-full-active.svg)!important;
+        }
+
+        .ql-icon-24-float-right {
+          background-image: url(../icons/float-right-active.svg)!important;
+        }
+
+        .ql-icon-24-float-left {
+          background-image: url(../icons/float-left-active.svg)!important;
         }
       }
 
-      &__icon {
-        display: flex;
-      }
     }
   }
 }

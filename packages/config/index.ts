@@ -1,4 +1,4 @@
-import { ComponentOptions } from "../ui/toolbar/type";
+import { ComponentOptions, HandlerFunc } from "../ui/toolbar/type";
 
 export interface ToolbarStringMap {
   [key: string]: string | ComponentOptions[];
@@ -8,6 +8,7 @@ export type ToolbarConfig = string | ToolbarStringMap;
 
 export interface Options {
   container: string | HTMLElement | ToolbarConfig[][];
+  handlers?: Record<string, HandlerFunc>;
 }
 
 export const DEFAULT_TOOLBAR_OPTIONS: Options = {
@@ -245,4 +246,9 @@ export const DEFAULT_TOOLBAR_OPTIONS: Options = {
       "print",
     ],
   ],
+  handlers: {
+    video: () => {
+      return "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4";
+    },
+  },
 };
