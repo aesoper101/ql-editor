@@ -8296,6 +8296,27 @@ q@^1.1.2:
   resolved "https://registry.npm.taobao.org/q/download/q-1.5.1.tgz?cache=0&sync_timestamp=1599054212574&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fq%2Fdownload%2Fq-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+ql-editor@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.nlark.com/ql-editor/download/ql-editor-0.1.0.tgz#96c68d26da053446bdc01b4c0a8f34dc6a4e2e24"
+  integrity sha1-lsaNJtoFNEa9wBtMCo803GpOLiQ=
+  dependencies:
+    "@aesoper/normal-utils" "^0.1.4"
+    "@juggle/resize-observer" "^3.2.0"
+    "@popperjs/core" "^2.8.2"
+    core-js "^3.6.5"
+    deep-equal "^2.0.5"
+    hotkeys-js "^3.8.3"
+    lodash "^4.17.21"
+    mime "^2.5.2"
+    parchment "^2.0.0-dev.2"
+    quill "^2.0.0-dev.4"
+    quill-delta "^4.2.2"
+    tinycolor2 "^1.4.2"
+    vue "^3.0.7"
+    vue-class-component "^8.0.0-0"
+    vue-router "^4.0.0-0"
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.npm.taobao.org/qs/download/qs-6.7.0.tgz?cache=0&sync_timestamp=1616096451342&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqs%2Fdownload%2Fqs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
