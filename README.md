@@ -1,24 +1,14 @@
 # ql-editor
 
-## Project setup
+## 安装
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+yarn install ql-editor
 ```
 
-### Compiles and minifies for production
+### 使用
 ```
-yarn build
+import QlEditor from "ql-editor";
+
+app.use(QlEditor);
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

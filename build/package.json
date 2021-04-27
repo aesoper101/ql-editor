@@ -1,0 +1,27 @@
+{
+  "name": "ql-editor",
+  "version": "1.0.0",
+  "description": "富文本编辑器",
+  "main": "ql-editor.es.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aesoper101/ql-editor.git"
+  },
+  "keywords": [
+    "editor",
+    "rich editor",
+    "富文本编辑器",
+    "仿金山富文本编辑器"
+  ],
+  "author": "aesoper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aesoper101/ql-editor/issues"
+  },
+  "homepage": "https://github.com/aesoper101/ql-editor#readme",
+  "dependencies": {}
+}

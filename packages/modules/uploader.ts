@@ -2,7 +2,7 @@ import Module from "quill/core/module";
 import Quill, { RangeStatic } from "quill";
 import mimelite from "mime/lite";
 import Delta from "quill-delta";
-import merge from "lodash.merge";
+import _ from "lodash";
 
 export interface UploadRequestSuccess {
   uploadType: "image" | "video" | "audio" | "attachment";
@@ -44,7 +44,7 @@ class Uploader extends Module {
 
   constructor(quill: Quill, options: UploaderOptions) {
     super(quill, options);
-    merge(this.options, options);
+    _.merge(this.options, options);
 
     if (this.options.allowDropUpload) {
       quill.root.addEventListener("drop", (e) => {

@@ -5,7 +5,7 @@ import { Color, ColorAttrs } from "../../utils/color";
 import Hue from "./common/hue";
 import Saturation from "./common/saturation";
 import Input from "./common/input";
-import clonedeep from "lodash.clonedeep";
+import _ from "lodash";
 import { DOMUtils } from "@aesoper/normal-utils";
 
 class ColorPicker {
@@ -214,7 +214,7 @@ class ColorPicker {
       this.currentColor.hsv.v
     );
 
-    this.input?.setData(clonedeep(this.currentColor));
+    this.input?.setData(_.cloneDeep(this.currentColor));
     if (this.colorDisplayEle) {
       this.colorDisplayEle.style.background = this.colorClass.format("rgb");
     }

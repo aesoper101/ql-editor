@@ -14,9 +14,9 @@ import {
   PropType,
 } from "vue";
 import "./register";
-import "./assets/scss/index.scss";
+
 import Quill, { QuillOptionsStatic, RangeStatic } from "quill";
-import merge from "lodash.merge";
+import _ from "lodash";
 import { Options, DEFAULT_TOOLBAR_OPTIONS } from "./config";
 
 interface EditorState {
@@ -25,7 +25,7 @@ interface EditorState {
 }
 
 export default defineComponent({
-  name: "Editor",
+  name: "QlEditor",
   components: {},
   props: {
     toolbar: {
@@ -123,9 +123,10 @@ export default defineComponent({
 
     const initialize = () => {
       if (editor.value) {
+        // noinspection TypeScriptValidateTypes
         state.quill = new Quill(
           editor.value,
-          merge(state.options, {
+          _.merge(state.options, {
             modules: {},
           })
         );
@@ -180,5 +181,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped></style>

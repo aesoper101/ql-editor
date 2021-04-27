@@ -6,18 +6,20 @@
 </template>
 
 <script lang="ts">
+import "ql-editor/assets/scss/index.scss";
 import { defineComponent, ref } from "vue";
-import QlEditor from "../../packages/index.vue";
+import { Editor } from "ql-editor";
 
 export default defineComponent({
-  components: { QlEditor },
+  components: { QlEditor: Editor },
   setup() {
     const value = ref("");
     return { value };
   },
 });
 </script>
-<style scoped>
+<style lang="scss" scoped>
+
 .test li::before {
   content: "(" counter(num, decimal) ")";
   color: #f00;

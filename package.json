@@ -2,41 +2,69 @@
   "name": "ql-editor",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/ql-editor.es.js",
+  "module": "dist/ql-editor.es.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aesoper101/ql-editor.git"
+  },
+  "keywords": [
+    "editor",
+    "rich editor",
+    "富文本编辑器",
+    "仿金山富文本编辑器"
+  ],
+  "author": "aesoper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aesoper101/ql-editor/issues"
+  },
+  "homepage": "https://github.com/aesoper101/ql-editor#readme",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:es": "yarn clean:dist && cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es ",
+    "build:version": "node build/gen-version.js",
+    "clean:dist": "rimraf dist",
+    "pub": "cd dist && npm publish --registry=http://registry.npmjs.org  && cd ..",
+    "unpub": "npm unpublish ql-editor --force --registry=http://registry.npmjs.org",
+    "deploy": "rimraf dist && yarn build && gh-pages -d dist",
+    "pre": "cd dist && yarn link && cd .. && yarn link ql-editor"
   },
   "dependencies": {
     "@aesoper/normal-utils": "^0.1.4",
     "@juggle/resize-observer": "^3.2.0",
     "@popperjs/core": "^2.8.2",
-    "@types/deep-equal": "^1.0.1",
     "core-js": "^3.6.5",
     "deep-equal": "^2.0.5",
     "hotkeys-js": "^3.8.3",
-    "lodash.clonedeep": "^4.5.0",
-    "lodash.merge": "^4.6.2",
+    "lodash": "^4.17.21",
     "mime": "^2.5.2",
     "parchment": "^2.0.0-dev.2",
     "quill": "^2.0.0-dev.4",
     "quill-delta": "^4.2.2",
     "tinycolor2": "^1.4.2",
     "vue": "^3.0.7",
-    "vue-class-component": "^8.0.0-rc.1",
-    "vue-router": "^4.0.5"
+    "vue-class-component": "^8.0.0-0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.12.7",
+    "@babel/runtime": "^7.13.17",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-auto-install": "^2.1.0",
-    "@rollup/plugin-babel": "^5.2.2",
-    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-image": "^2.0.6",
     "@rollup/plugin-node-resolve": "^11.1.0",
     "@rollup/plugin-replace": "^2.3.4",
+    "@types/deep-equal": "^1.0.1",
     "@types/fs-extra": "^9.0.6",
-    "@types/lodash.clonedeep": "^4.5.6",
-    "@types/lodash.merge": "^4.6.6",
+    "@types/lodash": "^4.14.168",
     "@types/mime": "^2.0.3",
     "@types/tinycolor2": "^1.4.2",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
@@ -49,6 +77,8 @@
     "@vue/compiler-sfc": "^3.0.7",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.7.0",
@@ -58,13 +88,20 @@
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.38.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-styles": "^3.14.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.29.0",
     "rollup-plugin-vue": "^6.0.0",
+    "sass": "^1.32.11",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5"
-  }
+  },
+  "browserslist": [
+    " > 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
