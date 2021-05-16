@@ -2,7 +2,10 @@ import History from "quill/modules/history";
 import Quill, { StringMap } from "quill";
 import FormatEvent from "../../modules/format-event";
 
-export type HandlerFunc = (quill: Quill, formatValue?: string) => string | void;
+export type HandlerFunc = (
+  quill: Quill,
+  formatValue?: string
+) => Promise<string | boolean | void> | void;
 
 export interface ComponentUpdateOptions {
   formats: StringMap;

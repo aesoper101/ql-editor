@@ -7,7 +7,7 @@ export interface ToolbarStringMap {
 export type ToolbarConfig = string | ToolbarStringMap;
 
 export interface Options {
-  container: string | HTMLElement | ToolbarConfig[][];
+  container?: string | HTMLElement | ToolbarConfig[][];
   handlers?: Record<string, HandlerFunc>;
 }
 

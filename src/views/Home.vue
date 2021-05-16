@@ -14,12 +14,16 @@ export default defineComponent({
   components: { QlEditor: Editor },
   setup() {
     const value = ref("");
-    return { value };
+    const handlers = {
+      image: () => {
+        return Promise.resolve("=========");
+      },
+    };
+    return { value, handlers };
   },
 });
 </script>
 <style lang="scss" scoped>
-
 .test li::before {
   content: "(" counter(num, decimal) ")";
   color: #f00;

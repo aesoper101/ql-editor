@@ -1,6 +1,6 @@
 import Module from "quill/core/module";
 import Quill, { StringMap } from "quill";
-import { DOMUtils } from "@aesoper/normal-utils";
+import { DOMUtils, isPromise } from "@aesoper/normal-utils";
 import { Component } from "../ui/toolbar/component";
 import { Registry } from "../ui/toolbar/registry";
 import FormatEvent from "./format-event";
@@ -192,10 +192,19 @@ class Toolbar extends Module {
 
     const range = this.quill.getSelection(true);
     if (this.handlers[format] != null) {
-      const result = this.handlers[format].call(this, this.quill, formatValue);
-      if (typeof result === "string") {
-        this.doUpdateFormat(format, result);
-        return;
+      const promiseFn = this.handlers[format].call(
+        this,
+        this.quill,
+        formatValue
+      );
+
+      if (isPromise(promiseFn)) {
+        promiseFn.then((result) => {
+          if (typeof result === "string" || typeof result === "boolean") {
+            this.doUpdateFormat(format, String(result));
+            return;
+          }
+        });
       }
     } else if (
       query &&
