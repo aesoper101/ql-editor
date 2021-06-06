@@ -1,10 +1,12 @@
-import { App } from "vue";
+import { App, Plugin } from "vue";
 
 import Editor from "./editor.vue";
 
-const install = (app: App) => {
-  app.component(Editor.name, Editor);
+const EditorPlugin: Plugin = {
+  install: (app: App) => {
+    app.component(Editor.name, Editor);
+  },
 };
 
 export { Editor };
-export default { install };
+export default EditorPlugin;
