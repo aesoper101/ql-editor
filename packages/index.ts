@@ -1,6 +1,6 @@
 import { App, Plugin } from "vue";
 
-import Editor from "./editor.vue";
+import Editor from "./editor";
 
 const EditorPlugin: Plugin = {
   install: (app: App) => {

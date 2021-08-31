@@ -1,10 +1,3 @@
-<template>
-  <div class="ql-docs" :class="mode">
-    <div ref="editor"></div>
-  </div>
-</template>
-
-<script lang="ts">
 import {
   defineComponent,
   onMounted,
@@ -177,7 +170,14 @@ export default defineComponent({
       state.quill = null;
     });
 
-    return { editor };
+    return () => {
+      const docClass = ["ql-docs", props.mode];
+
+      return (
+        <div class={docClass}>
+          <div ref={editor} />
+        </div>
+      );
+    };
   },
 });
-</script>
